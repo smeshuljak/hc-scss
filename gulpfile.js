@@ -29,5 +29,5 @@ gulp.task('demo', () => {
 gulp.task('default', ['dist', 'demo'], () => {});
 
 gulp.task('watch', ['default'], () => {
-  gulp.watch(glob.sync('./src/*.scss'), ['dist']);
+  gulp.watch(glob.sync('./src/*.scss'), ['default']);
 });

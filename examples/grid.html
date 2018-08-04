@@ -6,6 +6,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <title>Grid Demo</title>
+
     <link rel="stylesheet" href="style.css" type="text/css" media="all">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/color-brewer.min.css">
@@ -17,11 +19,40 @@
 
     <div id="container">
 
-      <div class="wrapper">
+      <div class="side-bar">
+        <nav>
+          <ul>
+            <li><a href="#">Grid</a></li>
+            <li><a href="#">Media Queries</a></li>
+            <li><a href="#">Other Mixins</a></li>
+            <li><a href="#">GitHub</a></li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="content">
+
+        <h1>Zi's grid of wonders</h1>
+        <h3>It's basically magic, don't ask me how it works. Pixie dust probably.</h3>
+
+        <h2>No really, this is how it works</h2>
+        <p>Zi's grid system uses a series of containers, rows, and columns to layout and align content. It's built with flexbox and is fully responsive. Below is an example and an in-depth look at how the grid comes together.</p>
+
+        <p>Breaking it down a bit:</p>
+        <ul class="breakdown">
+          <li>Containers provide a means to center and horizontally pad your site's contents. Use <code>.container</code> for a responsive pixel width or <code>.container-fluid</code> for <code>width: 100%</code> across all viewport and device sizes.</li>
+          <li>Rows are wrappers for columns. Each column has horizontal <code>padding</code> (called a gutter) for controlling the space between them. This <code>padding</code> is then counteracted on the rows with negative margins. This way, all the content in your columns is visually aligned down the left side.</li>
+          <li>In a grid layout, content must be placed within columns and only columns may be immediate children of rows.</li>
+          <li>Thanks to flexbox, grid columns without a specified width will automatically layout as equal width columns. For example, four instances of .col-sm will each automatically be 25% wide from the small breakpoint and up. See the auto-layout columns section for more examples.</li>
+          <li>Column classes indicate the number of columns you'd like to use out of the possible 12 per row. So, if you want three equal-width columns across, you can use .col-4.</li>
+          <li>Column widths are set in percentages, so they're always fluid and sized relative to their parent element.</li>
+        </ul>
 
         <div id="auto-layout-columns">
 
           <h2>Auto-layout</h2>
+          <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code>.col-sm-6</code>.</p>
 
           <div class="table">
             <div class="row">
@@ -45,7 +76,7 @@
             </div>
           </div>
 
-<pre><code class="scss">
+<pre><code class="scss"><figure class="background"></figure>
   .table {
     @include grid-container;
   }
@@ -65,6 +96,7 @@
         <div id="multi-row-columns">
 
           <h2>Multi-row</h2>
+          <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code>.col-sm-6</code>.</p>
 
           <div class="table">
             <div class="row">
@@ -82,12 +114,31 @@
             </div>
           </div>
 
+<pre><code class="scss"><figure class="background"></figure>
+  .table {
+    @include grid-container;
+  }
+
+  .row {
+    @include grid-row;
+  }
+
+  .col {
+    @include grid-column(responsive);
+  }
+
+  .w-100 {
+    @include grid-column(12);
+  }
+</code></pre>
+
         </div>
 
 
         <div id="custom-width-columns">
 
           <h2>Custom width</h2>
+          <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code>.col-sm-6</code>.</p>
 
           <div class="table">
             <div class="row">
@@ -114,12 +165,35 @@
             </div>
           </div>
 
+<pre><code class="scss"><figure class="background"></figure>
+  .table {
+    @include grid-container;
+  }
+
+  .row {
+    @include grid-row;
+  }
+
+  .col {
+    @include grid-column;
+  }
+
+  .col-5 {
+    @include grid-column(5);
+  }
+
+  .col-6 {
+    @include grid-column(6);
+  }
+</code></pre>
+
         </div>
 
 
         <div id="custom-breakpoints-columns">
 
           <h2>Custom breakpoints</h2>
+          <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code>.col-sm-6</code>.</p>
 
           <div class="table">
             <div class="row">
@@ -136,12 +210,31 @@
             </div>
           </div>
 
+<pre><code class="scss"><figure class="background"></figure>
+  .table {
+    @include grid-container;
+  }
+
+  .row {
+    @include grid-row;
+  }
+
+  .col-4 {
+    @include grid-column((default: 6, 600px: 4));
+  }
+
+  .col-2-5 {
+    @include grid-column((default: 12, small: 6, smedium: 2.4));
+  }
+</code></pre>
+
         </div>
 
 
         <div id="row-args">
 
           <h2>Row arguments</h2>
+          <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code>.col-sm-6</code>.</p>
 
           <div class="table">
             <div class="row justify-center">
@@ -162,12 +255,42 @@
             </div>
           </div>
 
+<pre><code class="scss"><figure class="background"></figure>
+  .table {
+    @include grid-container;
+  }
+
+  .row {
+
+    &.justify-center {
+      @include grid-row((justify: center));
+    }
+
+    &.justify-end {
+      @include grid-row((justify: end));
+    }
+
+    &.justify-space-between {
+      @include grid-row((justify: space-between));
+    }
+  }
+
+  .col-3 {
+    @include grid-column(3, (grow: false));
+  }
+
+  .col-2 {
+    @include grid-column(2, (grow: false));
+  }
+</code></pre>
+
         </div>
 
 
         <div id="column-args">
 
           <h2>Column arguments</h2>
+          <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code>.col-sm-6</code>.</p>
 
           <div class="table">
             <div class="row auto">
@@ -192,12 +315,51 @@
             </div>
           </div>
 
+<pre><code class="scss"><figure class="background"></figure>
+  .table {
+    @include grid-container;
+  }
+
+  .row {
+    @include grid-row;
+  }
+
+  .col-3 {
+    @include grid-column(3);
+  }
+
+  .auto {
+    .col-custom {
+      @include grid-column(auto);
+    }
+  }
+
+  .justify-end {
+    .col-custom {
+      @include grid-column(auto, (justify: end, grow: false));
+    }
+  }
+
+  .justify-center {
+    .col-custom {
+      @include grid-column(3, (justify: center, grow: false));
+    }
+  }
+
+  .order {
+    .col-custom {
+      @include grid-column(auto, (order: -1));
+    }
+  }
+</code></pre>
+
         </div>
 
 
         <div id="vertical-alignment">
 
           <h2>Vertical alignment</h2>
+          <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code>.col-sm-6</code>.</p>
 
           <div class="table">
             <div class="row align-default">
@@ -227,12 +389,57 @@
             </div>
           </div>
 
+<pre><code class="scss"><figure class="background"></figure>
+  .table {
+    @include grid-container;
+  }
+
+  .row {
+    height: 120px;
+    background-color: rgba(255, 0, 0, .1);
+
+    &.align-default,
+    &.align-self {
+      @include grid-row;
+    }
+
+    &.align-start {
+      @include grid-row((align: flex-start));
+    }
+
+    &.align-center {
+      @include grid-row((align: center));
+    }
+
+    &.align-end {
+      @include grid-row((align: flex-end));
+    }
+  }
+
+  .col-4 {
+    @include grid-column(4);
+
+    &.start {
+      @include grid-column(4, (align-self: flex-start));
+    }
+
+    &.center {
+      @include grid-column(4, (align-self: center));
+    }
+
+    &.end {
+      @include grid-column(4, (align-self: flex-end));
+    }
+  }
+</code></pre>
+
         </div>
 
 
         <div id="nesting">
 
           <h2>Nesting</h2>
+          <p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code>.col-sm-6</code>.</p>
 
           <div class="table">
             <div class="row">
@@ -248,6 +455,28 @@
               </div>
             </div>
           </div>
+
+<pre><code class="scss"><figure class="background"></figure>
+  .table {
+    @include grid-container;
+  }
+
+  .row {
+    @include grid-row;
+  }
+
+  .col-4 {
+    @include grid-column(4);
+  }
+
+  .col-6 {
+    @include grid-column(6);
+  }
+
+  .col-8 {
+    @include grid-column(8);
+  }
+</code></pre>
 
         </div>
 

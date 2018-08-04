@@ -8,15 +8,99 @@
   border: 1px solid rgba(86, 61, 124, .2);
 }
 
+h1 {
+  margin: 50px auto 20px;
+  font-size: 40px;
+  font-weight: lighter;
+  color: rgba(#212529, .7);
+}
+
 h2 {
   font-size: 30px;
   line-height: 1.2;
   margin: 50px 0 30px;
 }
 
+h3 {
+  font-size: 20px;
+  font-weight: lighter;
+  color: rgba(#212529, .7);
+}
+
+#container {
+  @include grid-row;
+  margin: 0;
+}
+
 .wrapper {
   @include wrapper;
 }
+
+.hljs {
+  background: #f8f9fa !important;
+}
+
+.content {
+  @include grid-column;
+  padding: 0 30px;
+
+  p {
+    font-weight: lighter;
+    color: rgba(#212529, .7);
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .breakdown {
+    list-style-type: disc;
+    padding-left: 35px;
+
+    li {
+      font-weight: lighter;
+      color: #212529;
+      margin-bottom: 10px;
+      line-height: 1.2;
+
+      code {
+        color: red;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.side-bar {
+  @include grid-column(2);
+  border-right: solid 1px #f8f9fa;
+  padding-top: 52px;
+  min-width: 140px;
+
+
+  nav {
+    @include grid-container;
+    position: sticky;
+    top: 52px;
+  }
+
+  ul {
+    @include grid-column;
+  }
+
+  li {
+    @include grid-row;
+    margin-bottom: 15px;
+  }
+
+  a {
+    color: #212529;
+    transition: color .2s ease;
+
+    &:hover {
+      color: pink;
+    }
+  }
+}
+
 
 .row {
   margin-bottom: 16px;
